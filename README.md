@@ -1,4 +1,15 @@
 # Linux Shell: hfsh26
+
+## Resume Bullet Points
+
+* **Implemented a fully-functional Unix shell in C++** supporting both interactive and batch execution modes, demonstrating proficiency with low-level systems programming.
+* **Leveraged core POSIX process-management APIs** (`fork`, `execv`, `wait`/`waitpid`, `chdir`, `access`) to spawn, execute, and reap child processes without relying on the `system()` library call.
+* **Built parallel command execution** using the `&` operator: forks multiple child processes concurrently, then synchronizes with all of them via `wait()`, reducing total execution time for independent workloads.
+* **Implemented I/O redirection** (`>`) by opening output files with `open(O_WRONLY | O_CREAT | O_TRUNC)` and redirecting both `stdout` and `stderr` into the file using `dup2()`.
+* **Designed a dynamic, user-configurable `PATH` mechanism**: maintains a `std::vector<std::string>` of search directories that can be overwritten at runtime with the built-in `path` command; resolves executables by probing each directory with `access()`.
+* **Integrated a Flex-generated lexer** (`scan.l`) for robust tokenisation of input lines, correctly handling variable whitespace, special operators (`>`, `&`), quoted strings, and edge cases.
+* **Implemented three built-in commands** (`exit`, `cd`, `path`) entirely within the shell process, with proper argument-count validation and consistent POSIX-style error reporting to `stderr`.
+* **Applied defensive programming practices**: checks every system-call return value, reports errors uniformly to `stderr`, and exits with the appropriate status code on unrecoverable errors (e.g., missing batch file, too many arguments).
 ## Operating Systems
 ## Due February 16 by 23:59
 
